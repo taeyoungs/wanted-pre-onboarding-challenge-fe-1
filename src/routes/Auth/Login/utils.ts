@@ -1,5 +1,6 @@
-import login from 'api/auth/login';
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
+
+import login from 'api/auth/login';
 
 type LoginParameters = Parameters<typeof login>[0];
 
@@ -24,7 +25,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
   }
 
   try {
-    const { token } = await login(formDataEntries);
+    const { token, message } = await login(formDataEntries);
 
     if (!token) {
       alert('토큰 정보가 유요하지 않습니다.');
@@ -32,6 +33,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     localStorage.setItem('token', token);
+    alert(message);
     return redirect('/');
   } catch (error) {
     alert('로그인에 실패했습니다.');
