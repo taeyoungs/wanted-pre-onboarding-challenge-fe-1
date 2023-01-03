@@ -9,6 +9,7 @@ import {
 
 import Login from 'routes/Auth/Login';
 import New from 'routes/Auth/New';
+import Home from 'routes/Home';
 import Layout from 'routes/Layout';
 
 const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} loader={Home.loader(queryClient)} />
       <Route path="auth">
         <Route path="login" element={<Login />} action={Login.action} />
         <Route path="new" element={<New />} action={New.action} />
