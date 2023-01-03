@@ -1,10 +1,10 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
 
-import login from 'api/auth/login';
+import signUp from 'api/auth/signup';
 
-type LoginParameters = Parameters<typeof login>[0];
+type SignUpParameters = Parameters<typeof signUp>[0];
 
-function isLoginParameters(args: any): args is LoginParameters {
+function isSignUpParameters(args: any): args is SignUpParameters {
   const hasEmail = args.email !== undefined;
   const hasPassword = args.password !== undefined;
 
@@ -15,29 +15,24 @@ const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const formDataEntries = Object.fromEntries(formData);
 
-  const existedToken = localStorage.getItem('token');
-  if (existedToken) {
-    return redirect('/');
-  }
-
-  if (!isLoginParameters(formDataEntries)) {
+  if (!isSignUpParameters(formDataEntries)) {
     throw new Error('Incorrect name mapping of html tag.');
   }
 
   try {
-    const { token, message } = await login(formDataEntries);
+    const { token, message } = await signUp(formDataEntries);
 
     if (!token) {
       alert('토큰 정보가 유요하지 않습니다.');
-      return redirect('/auth/login');
+      return redirect('/auth/create');
     }
 
     localStorage.setItem('token', token);
     alert(message);
     return redirect('/');
   } catch (error) {
-    alert('로그인에 실패했습니다.');
-    return redirect('/auth/login');
+    alert('회원가입에 실패했습니다.');
+    return redirect('/auth/create');
   }
 };
 
