@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import '../../App.css';
 
-function Root() {
+function Layout() {
   return (
     <main>
       <div>
@@ -15,4 +15,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Layout;

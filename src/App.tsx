@@ -7,11 +7,20 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Root from './routes/Root';
+import Login from 'routes/Auth/Login';
+import Layout from 'routes/Layout';
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(createRoutesFromElements(<Route path="/" element={<Root />} />));
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route path="auth">
+        <Route path="login" element={<Login />} action={Login.action} />
+      </Route>
+    </Route>,
+  ),
+);
 
 function App() {
   return (
