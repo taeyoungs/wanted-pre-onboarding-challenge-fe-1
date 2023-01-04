@@ -1,7 +1,8 @@
 import getTodos from 'api/todo/getTodos';
+import { todoKeys } from 'factory';
 
 const todosQuery = () => ({
-  queryKey: [{ scope: 'todo' }],
+  queryKey: todoKeys.all(),
   queryFn: getTodos,
 });
 
