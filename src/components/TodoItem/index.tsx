@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { css } from '@emotion/css';
 
 import useDeleteTodo from './hooks/useDeleteTodo';
@@ -75,13 +76,15 @@ function TodoItem({ id, title, content }: ITodoItemProps) {
               gap: 3px;
             `}
           >
-            <h3
-              className={css`
-                margin: 0;
-              `}
-            >
-              {title}
-            </h3>
+            <Link to={`${id}`}>
+              <h3
+                className={css`
+                  margin: 0;
+                `}
+              >
+                {title}
+              </h3>
+            </Link>
             <p
               className={css`
                 margin: 0;
