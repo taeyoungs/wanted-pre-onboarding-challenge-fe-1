@@ -23,6 +23,8 @@ function TodoForm() {
       title,
       content,
     });
+    setTitle('');
+    setContent('');
   };
 
   return (
