@@ -33,8 +33,8 @@ function Home() {
               <TodoList />
             </Await>
           </Suspense>
-          <Outlet />
         </section>
+        <Outlet />
       </div>
     </section>
   );
