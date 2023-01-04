@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import updateTodo from 'api/todo/updateTodo';
+import { todoKeys } from 'factory';
 
 const useUpdateTodo = () => {
   const queryClient = useQueryClient();
@@ -8,7 +9,7 @@ const useUpdateTodo = () => {
   return useMutation({
     mutationFn: updateTodo,
     onSuccess: () => {
-      return queryClient.invalidateQueries([{ scope: 'todo' }]);
+      return queryClient.invalidateQueries(todoKeys.all());
     },
   });
 };
