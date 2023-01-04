@@ -3,6 +3,8 @@ import { Await, Outlet, useLoaderData } from 'react-router-dom';
 import { css } from '@emotion/css';
 
 import TodoList from 'components/TodoList';
+import TodoForm from 'components/TodoForm';
+
 import { todosQuery } from './queryOptions';
 import { loader } from './utils';
 
@@ -23,12 +25,16 @@ function Home() {
           width: 100%;
         `}
       >
-        <Suspense fallback={<div>Loading ...</div>}>
-          <Await resolve={todos}>
-            <TodoList />
-          </Await>
-        </Suspense>
-        <Outlet />
+        <section>
+          <h2>Todo List</h2>
+          <TodoForm />
+          <Suspense fallback={<div>Loading ...</div>}>
+            <Await resolve={todos}>
+              <TodoList />
+            </Await>
+          </Suspense>
+          <Outlet />
+        </section>
       </div>
     </section>
   );
