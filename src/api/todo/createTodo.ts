@@ -2,12 +2,12 @@ import { axiosInstance } from 'api';
 
 import type { IResponseBody, ITodo } from 'api/types';
 
-interface IParameters {
+interface ICreateTodoParams {
   title: string;
   content: string;
 }
 
-const createTodo = async (params: IParameters) => {
+const createTodo = async (params: ICreateTodoParams) => {
   const token = localStorage.getItem('token');
 
   return axiosInstance
