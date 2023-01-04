@@ -2,4 +2,12 @@ interface IResponseBody<T> {
   data: T;
 }
 
-export type { IResponseBody };
+interface ITodo {
+  title: string;
+  content: string;
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type { IResponseBody, ITodo };

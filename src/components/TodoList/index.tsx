@@ -1,21 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import { useAsyncValue } from 'react-router-dom';
-
-import { todosQuery } from 'routes/Home/queryOptions';
+import useTodos from './hooks/useTodos';
+import TodoForm from 'components/TodoForm';
 
 function TodoList() {
-  const initialData = useAsyncValue() as Awaited<
-    ReturnType<ReturnType<typeof todosQuery>['queryFn']>
-  >;
-
-  const { data: todos } = useQuery({
-    ...todosQuery(),
-    initialData,
-  });
+  const { data: todos } = useTodos();
 
   return (
     <section>
       <h2>Todo List</h2>
+      <TodoForm />
       <ul>
         {todos.map(({ id, title }) => (
           <li key={id}>{title}</li>
