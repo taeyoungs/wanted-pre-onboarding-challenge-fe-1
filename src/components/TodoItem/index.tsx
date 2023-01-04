@@ -12,7 +12,7 @@ interface ITodoItemProps {
 }
 
 function TodoItem({ id, title, content }: ITodoItemProps) {
-  const { mutate: deleteTodo } = useDeleteTodo();
+  const { mutate: deleteTodo } = useDeleteTodo(id);
   const { mutate: updateTodo } = useUpdateTodo();
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
