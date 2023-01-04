@@ -2,11 +2,16 @@ import { axiosInstance } from 'api';
 
 import type { IResponseBody, ITodo } from 'api/types';
 
-const getTodos = async () => {
+interface IParameters {
+  title: string;
+  content: string;
+}
+
+const createTodo = async (params: IParameters) => {
   const token = localStorage.getItem('token');
 
   return axiosInstance
-    .get<IResponseBody<ITodo[]>>('/todos', {
+    .post<IResponseBody<ITodo>>('/todos', params, {
       headers: {
         Authorization: token,
       },
@@ -14,4 +19,4 @@ const getTodos = async () => {
     .then((res) => res.data.data);
 };
 
-export default getTodos;
+export default createTodo;
