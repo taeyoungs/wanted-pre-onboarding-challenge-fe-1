@@ -139,7 +139,7 @@ function TodoItem({ id, title, content }: ITodoItemProps) {
                 onChange={handleEditedContent}
                 placeholder="내용"
                 className={css`
-                  min-width: 300px;
+                  min-width: 250px;
                 `}
               />
             </div>
