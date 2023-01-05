@@ -11,12 +11,12 @@ interface ITodoItemProps {
   content: string;
 }
 
-function TodoItem({ id, title, content }: ITodoItemProps) {
+function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoItemProps) {
   const { mutate: deleteTodo } = useDeleteTodo(id);
   const { mutate: updateTodo } = useUpdateTodo();
   const [isEditMode, setIsEditMode] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(title);
-  const [editedContent, setEditedContent] = useState(content);
+  const [title, setTitle] = useState(initialTitle);
+  const [content, setContent] = useState(initialContent);
 
   const openEditMode = () => {
     setIsEditMode(true);
@@ -24,28 +24,28 @@ function TodoItem({ id, title, content }: ITodoItemProps) {
 
   const closeEditMode = () => {
     setIsEditMode(false);
-    setEditedTitle(title);
-    setEditedContent(content);
+    setTitle(initialTitle);
+    setContent(initialContent);
   };
 
   const handleEditedTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setEditedTitle(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleEditedContent: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setEditedContent(e.target.value);
+    setContent(e.target.value);
   };
 
   const handleEdit = () => {
     updateTodo({
       id,
-      title: editedTitle,
-      content: editedContent,
+      title,
+      content,
     });
     setIsEditMode(false);
   };
 
-  const isEmpty = editedTitle === '' || editedContent === '';
+  const isEmpty = title === '' || content === '';
 
   return (
     <div
@@ -125,17 +125,12 @@ function TodoItem({ id, title, content }: ITodoItemProps) {
             `}
           >
             <div>
-              <input
-                type="text"
-                value={editedTitle}
-                onChange={handleEditedTitle}
-                placeholder="제목"
-              />
+              <input type="text" value={title} onChange={handleEditedTitle} placeholder="제목" />
             </div>
             <div>
               <input
                 type="text"
-                value={editedContent}
+                value={content}
                 onChange={handleEditedContent}
                 placeholder="내용"
                 className={css`
