@@ -28,11 +28,11 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
     setContent(initialContent);
   };
 
-  const handleEditedTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleTitle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setTitle(e.target.value);
   };
 
-  const handleEditedContent: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleContent: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setContent(e.target.value);
   };
 
@@ -125,13 +125,13 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
             `}
           >
             <div>
-              <input type="text" value={title} onChange={handleEditedTitle} placeholder="제목" />
+              <input type="text" value={title} onChange={handleTitle} placeholder="제목" />
             </div>
             <div>
               <input
                 type="text"
                 value={content}
-                onChange={handleEditedContent}
+                onChange={handleContent}
                 placeholder="내용"
                 className={css`
                   min-width: 250px;
