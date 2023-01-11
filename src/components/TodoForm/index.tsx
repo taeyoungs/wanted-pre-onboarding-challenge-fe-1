@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { css } from '@emotion/css';
 
-import useCreateTodo from './hooks/useCreateTodo';
+import { useCreateTodo } from 'hooks/todo';
 
 function TodoForm() {
   const { mutate: createTodo } = useCreateTodo();

@@ -1,7 +1,7 @@
 import { css } from '@emotion/css';
 
 import TodoItem from 'components/TodoItem';
-import useTodos from './hooks/useTodos';
+import { useTodos } from 'hooks/todo';
 
 function TodoList() {
   const { data: todos } = useTodos();

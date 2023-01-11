@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import deleteTodo from 'api/todo/deleteTodo';
-import { todoKeys } from 'factory';
+import { todoKeys } from 'lib/react-query/factory';
+import { deleteTodo } from 'api/todo';
 
 const useDeleteTodo = (selectedId: string) => {
   const { id } = useParams();

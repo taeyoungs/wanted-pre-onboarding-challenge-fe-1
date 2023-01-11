@@ -1,13 +1,13 @@
 import { QueryClient } from '@tanstack/react-query';
 import { defer } from 'react-router-dom';
 
-import { todosQuery } from './queryOptions';
+import { todosQueryOption } from 'lib/react-query/options';
 
 const loader = (queryClient: QueryClient) => () => {
-  const todosQueryOptions = todosQuery();
+  const queryOption = todosQueryOption();
 
   return defer({
-    todos: queryClient.fetchQuery(todosQueryOptions),
+    todos: queryClient.fetchQuery(queryOption),
   });
 };
 

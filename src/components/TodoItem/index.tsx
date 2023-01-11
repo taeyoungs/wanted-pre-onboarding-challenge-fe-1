@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/css';
 
-import useDeleteTodo from './hooks/useDeleteTodo';
-import useUpdateTodo from './hooks/useUpdateTodo';
+import { useDeleteTodo, useUpdateTodo } from 'hooks/todo';
 
 interface ITodoItemProps {
   id: string;
