@@ -5,11 +5,11 @@ import { css } from '@emotion/css';
 import TodoList from 'components/TodoList';
 import TodoForm from 'components/TodoForm';
 
-import { todosQuery } from './queryOptions';
+import { todosQueryOption } from 'lib/react-query/options';
 import { loader } from './utils';
 
 interface IDefferedLoaderData {
-  todos: ReturnType<ReturnType<typeof todosQuery>['queryFn']>;
+  todos: ReturnType<ReturnType<typeof todosQueryOption>['queryFn']>;
 }
 
 function Home() {

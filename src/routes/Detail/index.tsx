@@ -3,11 +3,11 @@ import { Await, useLoaderData } from 'react-router-dom';
 
 import Todo from 'components/Todo';
 
-import { todoQuery } from './queryOptions';
+import { todoQueryOption } from 'lib/react-query/options';
 import { loader } from './utils';
 
 interface IDefferedLoaderData {
-  todo: ReturnType<ReturnType<typeof todoQuery>['queryFn']>;
+  todo: ReturnType<ReturnType<typeof todoQueryOption>['queryFn']>;
 }
 
 function Detail() {
