@@ -7,12 +7,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import AuthLayout from 'routes/AuthLayout';
-import Layout from 'routes/Layout';
-import Login from 'routes/Auth/Login';
-import New from 'routes/Auth/New';
-import Home from 'routes/Home';
-import Detail from 'routes/Detail';
+import { AuthLayout, Detail, Home, Layout, Login, New } from 'routes';
 
 const queryClient = new QueryClient();
 
