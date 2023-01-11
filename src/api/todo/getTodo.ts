@@ -7,6 +7,7 @@ import type { IResponseBody, ITodo } from 'api/types';
 
 const getTodo = async ({
   queryKey,
+  signal,
 }: QueryFunctionContext<ReturnType<typeof todoKeys['detail']>>) => {
   const [{ id }] = queryKey;
   const token = localStorage.getItem('token');
@@ -16,6 +17,7 @@ const getTodo = async ({
       headers: {
         Authorization: token,
       },
+      ...(signal && { signal }),
     })
     .then((res) => res.data.data);
 };
