@@ -1,7 +1,7 @@
 import { QueryFunctionContext } from '@tanstack/react-query';
 
 import { axiosInstance } from 'api';
-import { todoKeys } from 'factory';
+import { todoKeys } from 'lib/react-query/factory';
 
 import type { IResponseBody, ITodo } from 'api/types';
 

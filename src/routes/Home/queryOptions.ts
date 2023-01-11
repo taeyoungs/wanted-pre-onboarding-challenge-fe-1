@@ -1,5 +1,5 @@
-import getTodos from 'api/todo/getTodos';
-import { todoKeys } from 'factory';
+import { getTodos } from 'api/todo';
+import { todoKeys } from 'lib/react-query/factory';
 
 const todosQuery = () => ({
   queryKey: todoKeys.all(),
