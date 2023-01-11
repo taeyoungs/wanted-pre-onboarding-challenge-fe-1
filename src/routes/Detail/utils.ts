@@ -1,7 +1,7 @@
 import { QueryClient } from '@tanstack/react-query';
 import { defer, LoaderFunctionArgs, redirect } from 'react-router-dom';
 
-import { todoQuery } from './queryOptions';
+import { todoQueryOption } from 'lib/react-query/options';
 
 const loader =
   (queryClient: QueryClient) =>
@@ -12,10 +12,10 @@ const loader =
       return redirect('/');
     }
 
-    const todoQueryOptions = todoQuery(id);
+    const queryOption = todoQueryOption(id);
 
     return defer({
-      todo: queryClient.fetchQuery({ ...todoQueryOptions }),
+      todo: queryClient.fetchQuery(queryOption),
     });
   };
 
