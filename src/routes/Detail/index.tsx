@@ -15,7 +15,7 @@ function Detail() {
 
   return (
     <section>
-      <h2>Todo Detail</h2>
+      <h2>할일 상세</h2>
       <Suspense fallback={<div>Loading ...</div>}>
         <Await resolve={todo}>
           <Todo />

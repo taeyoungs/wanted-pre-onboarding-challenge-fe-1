@@ -27,7 +27,7 @@ function Home() {
         `}
       >
         <section>
-          <h2>Todo List</h2>
+          <h2>할일 목록</h2>
           <TodoForm />
           <Suspense fallback={<div>Loading ...</div>}>
             <Await resolve={todos}>
