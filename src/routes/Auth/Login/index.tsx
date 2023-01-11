@@ -5,7 +5,7 @@ import { css } from '@emotion/css';
 import { action } from './utils';
 
 const MIN_LEGNTH = 8;
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -22,8 +22,18 @@ function Login() {
   const isNotAvailale = password.length < MIN_LEGNTH || !EMAIL_REGEX.test(email);
 
   return (
-    <div>
-      <Form method="post">
+    <section>
+      <h1>로그인</h1>
+      <Form
+        method="post"
+        className={css`
+          border-radius: 10px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          padding: 32px 24px;
+          box-sizing: border-box;
+          display: inline-block;
+        `}
+      >
         <div
           className={css`
             display: flex;
@@ -52,12 +62,18 @@ function Login() {
             value={password}
             onChange={handlePassword}
           />
-          <button disabled={isNotAvailale} type="submit">
+          <button
+            className={css`
+              margin: 20px 0 0;
+            `}
+            disabled={isNotAvailale}
+            type="submit"
+          >
             제출
           </button>
         </div>
       </Form>
-    </div>
+    </section>
   );
 }
 

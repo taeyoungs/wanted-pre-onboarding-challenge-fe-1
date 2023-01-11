@@ -50,11 +50,10 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
   return (
     <div
       className={css`
-        padding: 12px 24px;
-        border-radius: 50px;
+        padding: 24px;
+        border-radius: 10px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         margin: 0 0 20px;
-        height: 80px;
         box-sizing: border-box;
         display: flex;
         align-items: center;

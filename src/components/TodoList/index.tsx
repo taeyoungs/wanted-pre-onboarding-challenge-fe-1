@@ -1,3 +1,5 @@
+import { css } from '@emotion/css';
+
 import TodoItem from 'components/TodoItem';
 import useTodos from './hooks/useTodos';
 
@@ -5,7 +7,11 @@ function TodoList() {
   const { data: todos } = useTodos();
 
   return (
-    <ul>
+    <ul
+      className={css`
+        padding: 0;
+      `}
+    >
       {todos.map(({ id, title, content }) => (
         <TodoItem key={id} title={title} id={id} content={content} />
       ))}
