@@ -1,20 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import { useAsyncValue, useParams } from 'react-router-dom';
 import { css } from '@emotion/css';
 
-import { todoQueryOption } from 'lib/react-query/options';
+import { useTodoById } from 'hooks/todo';
 
-function Todo() {
-  const { id } = useParams();
-  const initialData = useAsyncValue() as Awaited<
-    ReturnType<ReturnType<typeof todoQueryOption>['queryFn']>
-  >;
+interface ITodoProps {
+  id: string;
+}
 
-  const { data: todo } = useQuery({
-    ...todoQueryOption(id as string),
-    enabled: Boolean(id),
-    initialData,
-  });
+function Todo({ id }: ITodoProps) {
+  const { data: todo } = useTodoById(id);
 
   return (
     <section
