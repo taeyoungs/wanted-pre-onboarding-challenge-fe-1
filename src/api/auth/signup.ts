@@ -11,7 +11,9 @@ interface ISignUpResponseBody {
 }
 
 const signUp = async (params: ISignUpParameters) => {
-  return axiosInstance.post<ISignUpResponseBody>('/users/create', params).then((res) => res.data);
+  const response = await axiosInstance.post('/users/create', params);
+
+  return response.data.data as ISignUpResponseBody;
 };
 
 export default signUp;

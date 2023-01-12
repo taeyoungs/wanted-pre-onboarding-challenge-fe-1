@@ -1,6 +1,6 @@
 import { axiosInstance } from 'api';
 
-import type { IResponseBody, ITodo } from 'api/types';
+import type { ITodo } from 'api/types';
 
 interface ICreateTodoParams {
   title: string;
@@ -8,7 +8,9 @@ interface ICreateTodoParams {
 }
 
 const createTodo = async (params: ICreateTodoParams) => {
-  return axiosInstance.post<IResponseBody<ITodo>>('/todos', params).then((res) => res.data.data);
+  const response = await axiosInstance.post('/todos', params);
+
+  return response.data.data as ITodo;
 };
 
 export default createTodo;

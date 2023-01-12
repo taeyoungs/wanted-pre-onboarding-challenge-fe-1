@@ -11,7 +11,9 @@ interface ILoginResponseBody {
 }
 
 const login = async (params: ILoginParameters) => {
-  return axiosInstance.post<ILoginResponseBody>('/users/login', params).then((res) => res.data);
+  const response = await axiosInstance.post('/users/login', params);
+
+  return response.data.data as ILoginResponseBody;
 };
 
 export default login;

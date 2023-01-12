@@ -5,7 +5,9 @@ import type { ITodo } from 'api/types';
 type IDeleteTodoParams = Pick<ITodo, 'id'>;
 
 const deleteTodo = async ({ id }: IDeleteTodoParams) => {
-  return axiosInstance.delete(`/todos/${id}`);
+  const response = await axiosInstance.delete(`/todos/${id}`);
+
+  return response.data.data as null;
 };
 
 export default deleteTodo;

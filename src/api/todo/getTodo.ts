@@ -3,7 +3,7 @@ import { QueryFunctionContext } from '@tanstack/react-query';
 import { axiosInstance } from 'api';
 import { todoKeys } from 'lib/react-query/factory';
 
-import type { IResponseBody, ITodo } from 'api/types';
+import type { ITodo } from 'api/types';
 
 const getTodo = async ({
   queryKey,
@@ -11,11 +11,11 @@ const getTodo = async ({
 }: QueryFunctionContext<ReturnType<typeof todoKeys['detail']>>) => {
   const [{ id }] = queryKey;
 
-  return axiosInstance
-    .get<IResponseBody<ITodo>>(`/todos/${id}`, {
-      ...(signal && { signal }),
-    })
-    .then((res) => res.data.data);
+  const response = await axiosInstance.get(`/todos/${id}`, {
+    ...(signal && { signal }),
+  });
+
+  return response.data.data as ITodo;
 };
 
 export default getTodo;

@@ -1,9 +1,11 @@
 import { axiosInstance } from 'api';
 
-import type { IResponseBody, ITodo } from 'api/types';
+import type { ITodo } from 'api/types';
 
 const getTodos = async () => {
-  return axiosInstance.get<IResponseBody<ITodo[]>>('/todos').then((res) => res.data.data);
+  const response = await axiosInstance.get('/todos');
+
+  return response.data.data as ITodo[];
 };
 
 export default getTodos;
