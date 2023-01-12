@@ -10,13 +10,9 @@ const getTodo = async ({
   signal,
 }: QueryFunctionContext<ReturnType<typeof todoKeys['detail']>>) => {
   const [{ id }] = queryKey;
-  const token = localStorage.getItem('token');
 
   return axiosInstance
     .get<IResponseBody<ITodo>>(`/todos/${id}`, {
-      headers: {
-        Authorization: token,
-      },
       ...(signal && { signal }),
     })
     .then((res) => res.data.data);

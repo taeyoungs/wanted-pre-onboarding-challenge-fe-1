@@ -8,15 +8,7 @@ interface ICreateTodoParams {
 }
 
 const createTodo = async (params: ICreateTodoParams) => {
-  const token = localStorage.getItem('token');
-
-  return axiosInstance
-    .post<IResponseBody<ITodo>>('/todos', params, {
-      headers: {
-        Authorization: token,
-      },
-    })
-    .then((res) => res.data.data);
+  return axiosInstance.post<IResponseBody<ITodo>>('/todos', params).then((res) => res.data.data);
 };
 
 export default createTodo;
