@@ -1,13 +1,15 @@
 import { css } from '@emotion/css';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+
+import { TOKEN } from 'constants';
 import '../../App.css';
 
 function Layout() {
-  const hasToken = localStorage.getItem('token');
+  const hasToken = localStorage.getItem(TOKEN);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem(TOKEN);
     navigate({ pathname: '/' }, { replace: true });
   };
 

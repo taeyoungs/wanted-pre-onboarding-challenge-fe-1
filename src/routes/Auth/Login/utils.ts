@@ -1,6 +1,7 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
 
 import login from 'api/auth/login';
+import { TOKEN } from 'constants';
 
 type LoginParameters = Parameters<typeof login>[0];
 
@@ -15,7 +16,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const formDataEntries = Object.fromEntries(formData);
 
-  const existedToken = localStorage.getItem('token');
+  const existedToken = localStorage.getItem(TOKEN);
   if (existedToken) {
     return redirect('/');
   }
@@ -32,7 +33,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
       return redirect('/auth/login');
     }
 
-    localStorage.setItem('token', token);
+    localStorage.setItem(TOKEN, token);
     alert(message);
     return redirect('/');
   } catch (error) {

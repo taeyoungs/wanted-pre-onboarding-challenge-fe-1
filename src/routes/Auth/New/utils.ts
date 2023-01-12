@@ -1,6 +1,7 @@
 import { ActionFunctionArgs, redirect } from 'react-router-dom';
 
 import signUp from 'api/auth/signup';
+import { TOKEN } from 'constants';
 
 type SignUpParameters = Parameters<typeof signUp>[0];
 
@@ -27,7 +28,7 @@ const action = async ({ request }: ActionFunctionArgs) => {
       return redirect('/auth/create');
     }
 
-    localStorage.setItem('token', token);
+    localStorage.setItem(TOKEN, token);
     alert(message);
     return redirect('/');
   } catch (error) {

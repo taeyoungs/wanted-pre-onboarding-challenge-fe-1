@@ -47,7 +47,7 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
   const isEmpty = title === '' || content === '';
 
   return (
-    <div
+    <li
       className={css`
         padding: 24px;
         border-radius: 10px;
@@ -59,7 +59,7 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
       `}
     >
       {!isEditMode ? (
-        <li
+        <div
           className={css`
             display: flex;
             align-items: center;
@@ -105,9 +105,9 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
               삭제
             </button>
           </div>
-        </li>
+        </div>
       ) : (
-        <li
+        <div
           className={css`
             display: flex;
             align-items: center;
@@ -151,9 +151,9 @@ function TodoItem({ id, title: initialTitle, content: initialContent }: ITodoIte
               취소
             </button>
           </div>
-        </li>
+        </div>
       )}
-    </div>
+    </li>
   );
 }
 
