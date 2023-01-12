@@ -3,9 +3,7 @@ import { Form } from 'react-router-dom';
 import { css } from '@emotion/css';
 
 import { action } from './utils';
-
-const MIN_LEGNTH = 8;
-const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+import { EMAIL_REGEX, MIN_LEGNTH } from 'constants';
 
 function New() {
   const [email, setEmail] = useState('');
